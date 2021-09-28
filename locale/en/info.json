@@ -1,0 +1,17 @@
+{
+  "language-name": "English",
+  "font": {
+    "stargate_sg1_glyphs":
+    [
+      "__stargate__/fonts/stargate_sg1_glyphs.ttf"
+    ],
+    "stargate_sg1_goauld_glyphs":
+    [
+      "__stargate__/fonts/stargate_sg1_goauld_glyphs.ttf"
+    ],
+    "stargate_atlantis_glyphs":
+    [
+      "__stargate__/fonts/stargate_atlantis_glyphs.ttf"
+    ]
+  }
+}

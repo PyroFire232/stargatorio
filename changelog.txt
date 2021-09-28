@@ -1,0 +1,117 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.1.5
+Date: 13.3.2021
+  Changes:
+    - f (typo crash)
+
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.4
+Date: 30.12.2020
+  Changes:
+    - Added option to enable placement in space with space exploration
+    - Factorio 1.1
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.3
+Date: 1.11.2020
+  Changes:
+    - dhd fast-dial tweaks
+    - Fixed belt flip setting locale
+    - Factorio 1.0.0
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+Date: 6.5.2020
+  Changes:
+    - Pegasus Stargate DHD's now use fast-dial combinator logic (untested)
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 3.5.2020
+  Changes:
+    - Fixed a potential same-tick bug in multiplayer
+    - Fixed combinator dial delay (now it's actually 260)
+    - Fixed a bug with dial menu minimaps showing the wrong surface
+    - Added full cohort of Universe, Pegasus and Milkyway Stargate models and associated sounds with differing tiers of technology prerequisites, cost, and functionality.
+    - Stargate sound/animations now play a bit slower.
+
+
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 30.4.2020
+  Changes:
+    - Fixed a bug with picking up stargates
+    - Fixed stargate corpse wooden chest bug
+    - Added flip belts mod setting (belt logistics output on the opposite side)
+    - Fixed a bug with logistics moving between gates before it opens
+    - Added DHD and combinator-driven automated dialing. Following the lore, if you want to use it, figure it out. No tutorials. That's how they did it on the show! :D (Tip: Feed it the letter "Z" to help learn it)
+    - Stargates can no longer be placed too close together
+    - lib v0.0.15
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.9
+Date: 11.4.2020
+  Changes:
+    - Factorio 0.18.18
+    - lib v0.0.10
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.8
+Date: 1.12.2019
+  Changes:
+    - lib v0.0.9
+
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.7
+Date: 30.11.2019
+  Changes:
+    - thumbnail
+    - Added event filters
+    - Library update
+
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.6
+Date: 23.11.2019
+  Changes:
+    - Fixed saving/loading
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.5
+Date: 23.11.2019
+  Changes:
+    - Animations, lighting, sounds, bells and whistles
+    - Dialing delays etc
+    - "Easter egg" after dialing
+
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.4
+Date: 23.11.2019
+  Changes:
+    - Added stargate glyphs to DHD menu and added stargate codes
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.3
+Date: 23.11.2019
+  Changes:
+    - Crash with surfaces being deleted
+    - Fixed north/south side logistics connecting in the reverse direction.
+    - Stargates now scan for belt connections when placed
+    - Fixed menu searching, renaming and list sorting
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 22.11.2019
+  Changes:
+    - Gui update
+    - Logistics updates: Belts now transfer contents between stargates (while they're open)
+
+
+---------------------------------------------------------------------------------------------------
+Version: 0.0.1
+Date: 22.11.2019
+  Changes:
+    - lol

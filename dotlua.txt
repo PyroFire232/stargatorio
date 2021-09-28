@@ -1,0 +1,75 @@
+
+function stargate.CombinatorLogic.stargate_atlantis(gate,tick)
+	local GetSignal=gate.dhd.get_merged_signal
+
+	local red=GetSignal{type="virtual",name="signal-red"}
+	if(red>0)then if(gate.isopen)then stargate.Shutdown(gate) end gate.dht=nil
+	elseif(not gate.isopen and not gate.dialing)then if(gate.dht and not gate.dht.fastdial)then gate.dht=nil return end gate.dht=gate.dht or {fastdial=true} local dht=gate.dht
+		local dbg=(GetSignal{type="virtual",name="signal-Z"})>0
+		local green=GetSignal{type="virtual",name="signal-green"}
+
+		if(green)then
+			if(not dht.open_dial)then
+				if(green)then
+					if(dbg)then game.print("Stargate Chevron Ring released") end
+					gate.dht.open_dial=true
+					gate.dht.open_tick=game.tick+2
+					stargate.play_gate_sound(gate,"dhd_dial")
+
+					local ticks={} local tv=0 gate.dht.ticks=ticks gate.dht.tick=1
+					for i=1,6,1 do local rng=math.random(2,5) tv=tv+rng ticks[i]={tick=game.tick+tv,rng=rng} cb.set_signal(i,{type="virtual",name="signal-"..i,count=rng}) end
+				end
+			else
+				if(dht.open_tick<game.tick)then if(not dht.close_combo)then dht.close_combo=true
+						local cb=gate.dhd.get_or_create_control_behavior()
+						for i=1,5,1 do cb.set_signal(i,{type="virtual",name="signal-"..i,count=0}) end
+				end end
+				if(not green and dht.tick<6)then
+					local tv=dht.ticks[dht.tick]
+					if(game.tick==dht.ticks[dht.tick])then dht.tick=dht.tick+1
+						local chevrons={} for i,e in pairs(stargate.Chevrons)do chevrons[e]=gate.dhd.get_merged_signal({type="virtual",name="signal-"..e}) end
+						local c,x=0 for i,e in pairs(chevrons)do if(e>0)then c=c+1 x=i end end
+						if(c==1)then
+							gate.dht.chevrons=gate.dht.chevrons or {}
+							table.insert(gate.dht.chevrons,x)
+							if(dbg)then game.print("Stargate Chevron Locked: "..x) end
+						elseif(c==0)then
+							gate.dht=nil
+							stargate.play_gate_sound(gate,"dial_fail")
+							if(dbg)then game.print("Stargate Signal-Dialing Failed: Chevron input not timed correctly") end
+						else
+							stargate.play_gate_sound(gate,"dhd_dial")
+						end
+								
+					elseif(c>1)then
+						gate.dht=nil
+						stargate.play_gate_sound(gate,"dial_fail")
+						if(dbg)then game.print("Stargate Signal-Dialing Failed: input more than one chevron at once") end
+					end
+				elseif(dht.tick==6)then
+					if(not green)then
+						gate.dht=nil
+						stargate.play_gate_sound(gate,"dial_fail")
+						if(dbg)then game.print("Stargate Signal-Dialing Failed: Dial Tone not timed correctly") end
+					else
+						local s="" for k,v in ipairs(gate.dht.chevrons)do s=s..v end
+						local vgate=stargate.GetGateByCode(s)
+						if(not vgate)then
+							gate.dht=nil
+							stargate.play_gate_sound(gate,"dial_fail")
+							if(dbg)then game.print("Stargate Signal-Dialing Failed: Could not find target Stargate") end
+						elseif(vgate and (vgate.isopen or vgate.dialing))then
+							gate.dht=nil
+							stargate.play_gate_sound(gate,"dial_fail")
+							if(dbg)then game.print("Stargate Signal-Dialing Failed: Destination Gate is already open") end
+						else
+							--gate.dht.start_dial=game.tick+180
+							stargate.OpenGate(gate,vgate)
+							gate.dht=nil
+						end
+					end
+				end
+			end
+		end
+	end
+end
